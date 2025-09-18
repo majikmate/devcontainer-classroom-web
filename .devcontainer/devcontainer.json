@@ -11,10 +11,6 @@
 
     // Features to add to the dev container. More info: https://containers.dev/features.
     "features": {
-        "ghcr.io/devcontainers/features/github-cli:latest": {
-            "installDirectlyFromGitHubRelease": true,
-            "version": "2.78.0"
-        },
         "ghcr.io/devcontainers/features/go:latest": {
             "version": "1.24.7"
         },
@@ -63,9 +59,19 @@
                 "bierner.github-markdown-preview",
                 "denoland.vscode-deno",
                 "ritwickdey.LiveServer",
-                "tyriar.lorem-ipsum"
+                "tyriar.lorem-ipsum",
+
+                // disable AI extensions
+                "-github.copilot",
+                "-github.copilot-chat"
             ],
             "settings": {
+                // disable AI features
+                "chat.disableAIFeatures": true,
+
+                // hide the secondary sidebar by default so even on startup copilot chat is not visible
+                "workbench.secondarySideBar.defaultVisibility": "hidden",
+
                 // default terminal profile
                 "terminal.integrated.defaultProfile.linux": "bash",
                 "terminal.integrated.profiles.linux": {
@@ -76,6 +82,14 @@
                     //     "path": "zsh"
                     // }
                 },
+
+                // disable extensions recommendations
+                "extensions.ignoreRecommendations": true,
+                "extensions.ignoreWorkspaceRecommendations": true,
+                // enable auto update of extensions
+                "extensions.autoUpdate": true,
+                // enable auto check for updates of extensions
+                "extensions.autoCheckUpdates": true,
 
                 // hide dot folders
                 "files.exclude": {
