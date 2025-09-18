@@ -15,26 +15,8 @@
             "installDirectlyFromGitHubRelease": true,
             "version": "2.78.0"
         },
-        "ghcr.io/devcontainers/features/docker-in-docker:latest": {
-            "moby": true,
-            "azureDnsAutoDetection": true,
-            "installDockerBuildx": true,
-            "installDockerComposeSwitch": true,
-            "version": "28.3.3",
-            "dockerDashComposeVersion": "v2"
-        },
         "ghcr.io/devcontainers/features/go:latest": {
-            "version": "1.25.0"
-        },
-        "ghcr.io/devcontainers/features/java:latest": {
-            "installGradle": true,
-            "installMaven": true,
-            "version": "24.0.2",
-            "jdkDistro": "tem",
-            "gradleVersion": "9.0.0",
-            "mavenVersion": "3.9.11",
-            "antVersion": "1.10.15",
-            "groovyVersion": "5.0.0"
+            "version": "1.24.7"
         },
         "ghcr.io/devcontainers/features/node:latest": {
             "nodeGypDependencies": true,
@@ -44,13 +26,6 @@
         },
         "ghcr.io/devcontainer-community/devcontainer-features/deno.com:latest": {
             "version": "v2.4.5"
-        },
-        "ghcr.io/devcontainers/features/python:latest": {
-            "installTools": false
-        },
-        "ghcr.io/rocker-org/devcontainer-features/miniforge:latest": {
-            "version": "25.3.0-3",
-            "variant": "Miniforge3"
         },
         "ghcr.io/majikmate/classroom-codespace-feature/locales:latest": {
             "lang": "en_US.UTF-8"
@@ -64,13 +39,9 @@
     // Explicit feature installation order - update-os must be last
     "overrideFeatureInstallOrder": [
         "ghcr.io/devcontainers/features/github-cli",
-        "ghcr.io/devcontainers/features/docker-in-docker",
         "ghcr.io/devcontainers/features/go",
-        "ghcr.io/devcontainers/features/java",
         "ghcr.io/devcontainers/features/node",
         "ghcr.io/devcontainer-community/devcontainer-features/deno.com",
-        "ghcr.io/devcontainers/features/python",
-        "ghcr.io/rocker-org/devcontainer-features/miniforge",
         "ghcr.io/majikmate/classroom-codespace-feature/locales",
         "ghcr.io/majikmate/classroom-codespace-feature/git",
         "ghcr.io/majikmate/classroom-codespace-feature/update-os"
@@ -90,7 +61,6 @@
         "vscode": {
             "extensions": [
                 "bierner.github-markdown-preview",
-                "ms-vsliveshare.vsliveshare",
                 "denoland.vscode-deno"
             ],
             "settings": {
