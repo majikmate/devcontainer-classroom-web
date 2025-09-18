@@ -61,7 +61,9 @@
         "vscode": {
             "extensions": [
                 "bierner.github-markdown-preview",
-                "denoland.vscode-deno"
+                "denoland.vscode-deno",
+                "ritwickdey.LiveServer",
+                "tyriar.lorem-ipsum"
             ],
             "settings": {
                 // default terminal profile
