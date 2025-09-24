@@ -15,20 +15,20 @@
       "resolved": "ghcr.io/devcontainers/features/node@sha256:3c35dff2aedeaeb86f03e10c265c29b56a1b3609324d83d6e901dbb6032543a4",
       "integrity": "sha256:3c35dff2aedeaeb86f03e10c265c29b56a1b3609324d83d6e901dbb6032543a4"
     },
-    "ghcr.io/majikmate/classroom-codespace-feature/git:latest": {
-      "version": "1.0.2",
-      "resolved": "ghcr.io/majikmate/classroom-codespace-feature/git@sha256:b7907a51bd917accdec9acebac13f1c4e36fbbdb7e92d764ceb9bf2e5a875685",
-      "integrity": "sha256:b7907a51bd917accdec9acebac13f1c4e36fbbdb7e92d764ceb9bf2e5a875685"
+    "ghcr.io/majikmate/devcontainer-features/git:latest": {
+      "version": "1.0.0",
+      "resolved": "ghcr.io/majikmate/devcontainer-features/git@sha256:42869a1d067fe9c03ddaeec604f849e0d582bfd9f37d879e5dc786a04784110b",
+      "integrity": "sha256:42869a1d067fe9c03ddaeec604f849e0d582bfd9f37d879e5dc786a04784110b"
     },
-    "ghcr.io/majikmate/classroom-codespace-feature/locales:latest": {
-      "version": "1.1.6",
-      "resolved": "ghcr.io/majikmate/classroom-codespace-feature/locales@sha256:777062740c342b813ae6e9130f8b86d114f1f9b953df4872561a8c22afd104fc",
-      "integrity": "sha256:777062740c342b813ae6e9130f8b86d114f1f9b953df4872561a8c22afd104fc"
+    "ghcr.io/majikmate/devcontainer-features/locales:latest": {
+      "version": "1.0.0",
+      "resolved": "ghcr.io/majikmate/devcontainer-features/locales@sha256:b2d75ffb5b90d3ea8fbd27bfad4f2e07ee95610c92c463a2729b75e9b7594fb0",
+      "integrity": "sha256:b2d75ffb5b90d3ea8fbd27bfad4f2e07ee95610c92c463a2729b75e9b7594fb0"
     },
-    "ghcr.io/majikmate/classroom-codespace-feature/update-os:latest": {
-      "version": "1.0.1",
-      "resolved": "ghcr.io/majikmate/classroom-codespace-feature/update-os@sha256:f00b9a43008acc87a9ef9b0f706d28d12d12ce8e8836c20e95d7ae1abe6310ad",
-      "integrity": "sha256:f00b9a43008acc87a9ef9b0f706d28d12d12ce8e8836c20e95d7ae1abe6310ad"
+    "ghcr.io/majikmate/devcontainer-features/update-os:latest": {
+      "version": "1.0.0",
+      "resolved": "ghcr.io/majikmate/devcontainer-features/update-os@sha256:546084bff798c1d151e0c336d3087fefd16e0ec369be86bf9e608ea4403722e5",
+      "integrity": "sha256:546084bff798c1d151e0c336d3087fefd16e0ec369be86bf9e608ea4403722e5"
     }
   }
 }

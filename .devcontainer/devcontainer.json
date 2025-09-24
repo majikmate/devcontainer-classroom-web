@@ -23,12 +23,12 @@
         "ghcr.io/devcontainer-community/devcontainer-features/deno.com:latest": {
             "version": "v2.4.5"
         },
-        "ghcr.io/majikmate/classroom-codespace-feature/locales:latest": {
+        "ghcr.io/majikmate/devcontainer-features/locales:latest": {
             "lang": "en_US.UTF-8"
         },
-        "ghcr.io/majikmate/classroom-codespace-feature/git:latest": {
+        "ghcr.io/majikmate/devcontainer-features/git:latest": {
         },
-        "ghcr.io/majikmate/classroom-codespace-feature/update-os:latest": {
+        "ghcr.io/majikmate/devcontainer-features/update-os:latest": {
         }
     },
 
@@ -38,9 +38,9 @@
         "ghcr.io/devcontainers/features/go",
         "ghcr.io/devcontainers/features/node",
         "ghcr.io/devcontainer-community/devcontainer-features/deno.com",
-        "ghcr.io/majikmate/classroom-codespace-feature/locales",
-        "ghcr.io/majikmate/classroom-codespace-feature/git",
-        "ghcr.io/majikmate/classroom-codespace-feature/update-os"
+        "ghcr.io/majikmate/devcontainer-features/locales",
+        "ghcr.io/majikmate/devcontainer-features/git",
+        "ghcr.io/majikmate/devcontainer-features/update-os"
     ],
 
     // update os packages whenever the container is created
