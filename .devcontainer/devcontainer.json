@@ -17,8 +17,7 @@
         "ghcr.io/devcontainers/features/common-utils:2": {
             "installZsh": false,
             "installOhMyZsh": false,
-            "installZshAutosuggestions": false,
-            "installZshSyntaxHighlighting": false,
+            "upgradePackages": false,
             "username": "student",
             "userUid": "1000",
             "userGId": "1000"
