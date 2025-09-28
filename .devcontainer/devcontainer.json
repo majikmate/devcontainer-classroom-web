@@ -63,12 +63,15 @@
         "vscode": {
             "extensions": [
                 "bierner.github-markdown-preview",
+                "golang.go",
                 "denoland.vscode-deno",
                 "ritwickdey.LiveServer",
                 "tyriar.lorem-ipsum",
 
-                // disable AI extensions
+                // disable GitHub extensions
                 "-github.vscode-pull-request-github",
+
+                // disable AI extensions
                 "-github.copilot",
                 "-github.copilot-chat"
             ],
