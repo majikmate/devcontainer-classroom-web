@@ -3,11 +3,26 @@
 {
     "name": "Debian",
     "build": {
-        "dockerfile": "Dockerfile"
+        "dockerfile": "Dockerfile",
+        "args": {
+            // Update 'VARIANT' to pick a different version of Debian.
+            // Options: bookworm (default), bullseye, buster
+            "VARIANT": "bookworm"
+        }
     },
-
+    // Set *default* user. Can be overridden in Dockerfile using USER <name>
+    "remoteUser": "student",
     // Features to add to the dev container. More info: https://containers.dev/features.
     "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": false,
+            "installOhMyZsh": false,
+            "installZshAutosuggestions": false,
+            "installZshSyntaxHighlighting": false,
+            "username": "student",
+            "userUid": "1000",
+            "userGId": "1000"
+        },
         "ghcr.io/devcontainers/features/go:latest": {
             "version": "latest"
         },
@@ -39,8 +54,6 @@
         "ghcr.io/majikmate/devcontainer-features/update-os"
     ],
 
-    // Set *default* user. Can be overridden in Dockerfile using USER <name>
-    "remoteUser": "student",
     "containerEnv": {
         "DEBIAN_FRONTEND": "noninteractive"
     },
