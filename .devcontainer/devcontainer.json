@@ -68,6 +68,9 @@
                 "ritwickdey.LiveServer",
                 "tyriar.lorem-ipsum",
 
+                // disable other Git extensions that might interfere with git operations in student repos
+                "-dbaeumer.vscode-eslint",
+
                 // disable GitHub extensions
                 "-github.vscode-pull-request-github",
 
