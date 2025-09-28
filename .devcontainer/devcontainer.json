@@ -46,6 +46,7 @@
 
     // Explicit feature installation order - update-os must be last
     "overrideFeatureInstallOrder": [
+        "ghcr.io/devcontainers/features/common-utils",
         "ghcr.io/devcontainers/features/go",
         "ghcr.io/devcontainers/features/node",
         "ghcr.io/devcontainer-community/devcontainer-features/deno.com",
