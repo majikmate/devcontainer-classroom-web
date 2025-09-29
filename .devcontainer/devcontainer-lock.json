@@ -20,15 +20,20 @@
       "resolved": "ghcr.io/devcontainers/features/node@sha256:3c35dff2aedeaeb86f03e10c265c29b56a1b3609324d83d6e901dbb6032543a4",
       "integrity": "sha256:3c35dff2aedeaeb86f03e10c265c29b56a1b3609324d83d6e901dbb6032543a4"
     },
+    "ghcr.io/majikmate/devcontainer-features/aliases:latest": {
+      "version": "1.0.1",
+      "resolved": "ghcr.io/majikmate/devcontainer-features/aliases@sha256:42e66268a0832a6264b67f009c8863f3494f85770db3360073d9cde33aa5a9cf",
+      "integrity": "sha256:42e66268a0832a6264b67f009c8863f3494f85770db3360073d9cde33aa5a9cf"
+    },
     "ghcr.io/majikmate/devcontainer-features/git:latest": {
       "version": "1.0.0",
       "resolved": "ghcr.io/majikmate/devcontainer-features/git@sha256:42869a1d067fe9c03ddaeec604f849e0d582bfd9f37d879e5dc786a04784110b",
       "integrity": "sha256:42869a1d067fe9c03ddaeec604f849e0d582bfd9f37d879e5dc786a04784110b"
     },
     "ghcr.io/majikmate/devcontainer-features/locales:latest": {
-      "version": "1.0.0",
-      "resolved": "ghcr.io/majikmate/devcontainer-features/locales@sha256:b2d75ffb5b90d3ea8fbd27bfad4f2e07ee95610c92c463a2729b75e9b7594fb0",
-      "integrity": "sha256:b2d75ffb5b90d3ea8fbd27bfad4f2e07ee95610c92c463a2729b75e9b7594fb0"
+      "version": "1.0.2",
+      "resolved": "ghcr.io/majikmate/devcontainer-features/locales@sha256:ddf92e0676abec7eed1cca03bdccdd2012b3975df8633c1cef03a7a85516dc79",
+      "integrity": "sha256:ddf92e0676abec7eed1cca03bdccdd2012b3975df8633c1cef03a7a85516dc79"
     },
     "ghcr.io/majikmate/devcontainer-features/update-os:latest": {
       "version": "1.0.0",
