@@ -3,9 +3,6 @@
     "name": "Classroom Environment",
     "image": "ghcr.io/majikmate/devcontainer-base:latest",
 
-    // Student-specific user
-    "remoteUser": "student",
-
     // Override common-utils to use student user
     "features": {
     },
