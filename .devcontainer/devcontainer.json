@@ -1,202 +1,49 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/debian
 {
-    "name": "Debian",
-    "build": {
-        "dockerfile": "Dockerfile",
-        "args": {
-            // Update 'VARIANT' to pick a different version of Debian.
-            // Options: bookworm (default), bullseye, buster
-            "VARIANT": "bookworm"
-        }
-    },
-    // Set *default* user. Can be overridden in Dockerfile using USER <name>
+    // Extends the base devcontainer configuration for classroom environment
+    "name": "Classroom Environment",
+    "image": "ghcr.io/majikmate/devcontainer-base:latest",
+
+    // Student-specific user
     "remoteUser": "student",
-    // Features to add to the dev container. More info: https://containers.dev/features.
+
+    // Override common-utils to use student user
     "features": {
-        "ghcr.io/devcontainers/features/common-utils:2": {
-            "installZsh": false,
-            "installOhMyZsh": false,
-            "upgradePackages": false,
-            "username": "student",
-            "userUid": "1000",
-            "userGId": "1000"
-        },
-        "ghcr.io/devcontainers/features/go:latest": {
-            "version": "latest"
-        },
-        "ghcr.io/devcontainers/features/node:latest": {
-            "nodeGypDependencies": true,
-            "version": "lts",
-            "pnpmVersion": "latest",
-            "nvmVersion": "latest"
-        },
-        "ghcr.io/devcontainer-community/devcontainer-features/deno.com:latest": {
-            "version": "latest"
-        },
-        "ghcr.io/majikmate/devcontainer-features/aliases:latest": {
-            "aliases": "ls=ls -h --color=auto, ll=ls -lah --color=auto, vs=code -r ., grep=grep --color=auto"
-        },
-        "ghcr.io/majikmate/devcontainer-features/locales:latest": {
-            "lang": "en_US.UTF-8"
-        },
-        "ghcr.io/majikmate/devcontainer-features/git:latest": {
-        },
-        "ghcr.io/majikmate/devcontainer-features/update-os:latest": {
-        }
     },
 
-    // Explicit feature installation order - update-os must be last
-    "overrideFeatureInstallOrder": [
-        "ghcr.io/devcontainers/features/common-utils",
-        "ghcr.io/devcontainers/features/go",
-        "ghcr.io/devcontainers/features/node",
-        "ghcr.io/devcontainer-community/devcontainer-features/deno.com",
-        "ghcr.io/majikmate/devcontainer-features/locales",
-        "ghcr.io/majikmate/devcontainer-features/git",
-        "ghcr.io/majikmate/devcontainer-features/update-os"
-    ],
-
-    "containerEnv": {
-        "DEBIAN_FRONTEND": "noninteractive"
-    },
-
-    // configure vscode environment
+    // Classroom-specific VS Code configuration
     "customizations": {
         "vscode": {
             "extensions": [
-                "bierner.github-markdown-preview",
-                "golang.go",
-                "denoland.vscode-deno",
+                // Educational extensions
                 "ritwickdey.LiveServer",
                 "tyriar.lorem-ipsum",
 
-                // disable other Git extensions that might interfere with git operations in student repos
+                // Disable extensions that might interfere
                 "-dbaeumer.vscode-eslint",
-
-                // disable GitHub extensions
                 "-github.vscode-pull-request-github",
 
-                // disable AI extensions
+                // Disable AI extensions for classroom use
                 "-github.copilot",
                 "-github.copilot-chat"
             ],
             "settings": {
-                // disable AI features
+                // Disable AI features
                 "chat.disableAIFeatures": true,
 
-                // hide the secondary sidebar by default so even on startup copilot chat is not visible
+                // Hide secondary sidebar to prevent Copilot chat visibility
                 "workbench.secondarySideBar.defaultVisibility": "hidden",
 
-                // default terminal profile
-                "terminal.integrated.defaultProfile.linux": "bash",
-                "terminal.integrated.profiles.linux": {
-                    "bash": {
-                        "path": "bash"
-                    }
-                },
-
-                // disable extensions recommendations
+                // Disable extension recommendations
                 "extensions.ignoreRecommendations": true,
                 "extensions.ignoreWorkspaceRecommendations": true,
-                // enable auto update of extensions
-                "extensions.autoUpdate": true,
-                // enable auto check for updates of extensions
-                "extensions.autoCheckUpdates": true,
 
-                // hide dot folders
+                // Hide configuration folders from students
                 "files.exclude": {
                     "**/.devcontainer": true,
                     "**/.github": true,
                     "**/.vscode": true
-                },
-                // open markdown files in preview mode
-                "workbench.editorAssociations": {
-                    "*.md": "vscode.markdown.preview.editor"
-                },
-                // configure the innitial default theme
-                "workbench.colorTheme": "Visual Studio Dark",
-                // enable to use deno as the typescript language server, see "https://docs.deno.com/runtime/getting_started/installation/"
-                "deno.enable": true,
-                // enable to use deno as the testing framework
-                "deno.codeLens.testArgs": ["--allow-all", "--check=all"],
-
-                // Git settings for smooth workflows within vscode
-                //
-                // Especially "git.autoStash": true and "git.rebaseWhenSync": true are imortant so that
-                // when the starter repo is updated, the changes are automatically fetched and rebased
-                // to the student repos without any conflicts during pull/push/sync operations. Local
-                // changes are stashed before pulling and reapplied after the sync.
-                //
-                // To configure these option also for the command line git, use the following commands:
-                // git config --global pull.rebase true
-                // git config --global rebase.autoStash true
-
-                // ===================================
-                // git settings, do not change
-
-                // "git.autofetch": true -> automatically fetch changes from the starter repo
-                "git.autofetch": true,
-
-                // "git.autoStash": true -> automatically stash changes before pulling
-                "git.autoStash": true,
-
-                // "git.confirmSync": false -> do not ask for confirmation before syncing
-                "git.confirmSync": false,
-
-                // "git.enableSmartCommit": true -> automatically stage all changes before commit if no changes are already staged
-                "git.enableSmartCommit": true,
-
-                // "git.postCommitCommand": "sync" -> automatically sync changes after commit
-                "git.postCommitCommand": "sync",
-
-                // "git.rebaseWhenSync": true -> automatically rebase changes when syncing
-                "git.rebaseWhenSync": true,
-
-                // "git.rememberPostCommitCommand": false -> do not remember the last post-commit and always switch back to "sync"
-                "git.rememberPostCommitCommand": false,
-
-                // "git.useEditorAsCommitInput": false -> do not use the editor as the default commit message input
-                "git.useEditorAsCommitInput": false,
-
-                // ===================================
-                // other settings, do not change
-
-                // "editor.formatOnSave": automatically format files on save
-                "editor.formatOnSave": true,
-
-                // "editor.insertSpaces": true -> insert spaces when pressing Tab
-                "editor.insertSpaces": true,
-
-                // "editor.tabSize": use x spaces for indentation
-                "editor.tabSize": 4,
-
-                // "editor.detectIndentation": false -> do not detect indentation so that even when indentation is mixed, the editor will use the defined tab/space settings
-                "editor.detectIndentation": false,
-
-                // "editor.defaultFormatter": "denoland.vscode-deno" -> use the Deno formatter and linter as the default ones
-                "editor.defaultFormatter": "denoland.vscode-deno",
-
-                // Go-specific settings
-                "[go]": {
-                    "editor.formatOnSave": true,
-                    "editor.defaultFormatter": "golang.go",
-                    "editor.insertSpaces": false,
-                    "editor.tabSize": 4,
-                    "editor.codeActionsOnSave": {
-                        "source.organizeImports": "explicit"
-                    }
-                },
-                "[go.mod]": {
-                    "editor.formatOnSave": true,
-                    "editor.defaultFormatter": "golang.go"
-                },
-                "[go.sum]": {
-                    "editor.formatOnSave": false
                 }
             }
         }
     }
-    // Use 'forwardPorts' to make a list of ports inside the container available locally.
-    //"forwardPorts": []
 }
