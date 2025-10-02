@@ -12,7 +12,7 @@
         "vscode": {
             "extensions": [
                 // Educational extensions
-                "ritwickdey.LiveServer",
+                "ms-vscode.live-server",
                 "tyriar.lorem-ipsum",
 
                 // Disable extensions that might interfere
@@ -39,7 +39,9 @@
                     "**/.devcontainer": true,
                     "**/.github": true,
                     "**/.vscode": true
-                }
+                },
+
+                "livePreview.openPreviewTarget": "External Browser"
             }
         }
     }
