@@ -2,11 +2,8 @@
     // Extends the base devcontainer configuration for classroom environment
     "name": "Classroom Environment",
     "image": "ghcr.io/majikmate/devcontainer-base:latest",
-
     // Override common-utils to use student user
-    "features": {
-    },
-
+    "features": {},
     // Classroom-specific VS Code configuration
     "customizations": {
         "vscode": {
@@ -14,11 +11,9 @@
                 // Educational extensions
                 "ms-vscode.live-server",
                 "tyriar.lorem-ipsum",
-
+                "bradlc.vscode-tailwindcss",
                 // Disable extensions that might interfere
-                "-dbaeumer.vscode-eslint",
                 "-github.vscode-pull-request-github",
-
                 // Disable AI extensions for classroom use
                 "-github.copilot",
                 "-github.copilot-chat"
@@ -26,21 +21,16 @@
             "settings": {
                 // Disable AI features
                 "chat.disableAIFeatures": true,
-
                 // Hide secondary sidebar to prevent Copilot chat visibility
                 "workbench.secondarySideBar.defaultVisibility": "hidden",
-
                 // Disable extension recommendations
                 "extensions.ignoreRecommendations": true,
-                "extensions.ignoreWorkspaceRecommendations": true,
-
                 // Hide configuration folders from students
                 "files.exclude": {
                     "**/.devcontainer": true,
                     "**/.github": true,
                     "**/.vscode": true
                 },
-
                 "livePreview.openPreviewTarget": "External Browser"
             }
         }
