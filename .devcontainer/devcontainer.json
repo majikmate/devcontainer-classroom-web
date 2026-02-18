@@ -15,15 +15,35 @@
                 "dsznajder.es7-react-js-snippets",
                 // Disable extensions that might interfere
                 "-github.vscode-pull-request-github",
-                // Disable AI extensions for classroom use
+                // Opt out of Copilot if it is embedded in base image labels or added by a Feature.
+                // NOTE: the "-" prefix does NOT block locally-installed user extensions —
+                // the settings below and remote.extensionKind handle that case.
                 "-github.copilot",
                 "-github.copilot-chat"
             ],
             "settings": {
-                // Disable inline suggestions
+                // Disable all Copilot features
+                // Primary completions kill-switch: disables ghost text for ALL languages (official GitHub Copilot setting)
+                "github.copilot.enable": { "*": false },
+                // Disable next edit suggestions (NES) — confirmed setting in VS Code docs
                 "github.copilot.nextEditSuggestions.enabled": false,
-                // Hide secondary sidebar to prevent Copilot chat visibility
+                // Disable agent mode — confirmed in VS Code v1.99 release notes
+                "chat.agent.enabled": false,
+                // Force Copilot extensions to run on local UI side only (not in container),
+                // preventing them from providing completions even if somehow installed.
+                // This works regardless of whether the extension was installed locally or via defaultExtensions.
+                "remote.extensionKind": {
+                    "github.copilot": ["ui"],
+                    "github.copilot-chat": ["ui"]
+                },
+                // Hide the Copilot Chat panel (lives in the secondary sidebar).
+                // NOTE: this is a *default* for new workspaces with no persisted state.
+                // VS Code saves sidebar visibility after each session and restores it on
+                // reconnect, ignoring this setting. It reliably hides the panel on a
+                // fresh Codespace creation; students can manually open it afterwards.
                 "workbench.secondarySideBar.defaultVisibility": "hidden",
+                // Hide the Copilot button from the title bar Command Center
+                "chat.commandCenter.enabled": false,
                 // Disable extension recommendations
                 "extensions.ignoreRecommendations": true,
                 // Hide configuration folders from students
