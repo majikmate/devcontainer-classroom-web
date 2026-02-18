@@ -12,6 +12,7 @@
                 "ms-vscode.live-server",
                 "tyriar.lorem-ipsum",
                 "bradlc.vscode-tailwindcss",
+                "dsznajder.es7-react-js-snippets",
                 // Disable extensions that might interfere
                 "-github.vscode-pull-request-github",
                 // Disable AI extensions for classroom use
@@ -19,8 +20,8 @@
                 "-github.copilot-chat"
             ],
             "settings": {
-                // Disable AI features
-                "chat.disableAIFeatures": true,
+                // Disable inline suggestions
+                "github.copilot.nextEditSuggestions.enabled": false,
                 // Hide secondary sidebar to prevent Copilot chat visibility
                 "workbench.secondarySideBar.defaultVisibility": "hidden",
                 // Disable extension recommendations
