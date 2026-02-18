@@ -42,8 +42,13 @@
                 // reconnect, ignoring this setting. It reliably hides the panel on a
                 // fresh Codespace creation; students can manually open it afterwards.
                 "workbench.secondarySideBar.defaultVisibility": "hidden",
-                // Hide the Copilot button from the title bar Command Center
-                "chat.commandCenter.enabled": false,
+                // Hide the Copilot/Chat button from the title bar Command Center.
+                // NOTE: "chat.commandCenter.enabled" was removed in VS Code 1.97 (Jan 2026, PR #290119);
+                // it is now silently ignored. The replacement is "chat.agentsControl.enabled" (the new
+                // Agent Status widget) combined with "chat.disableAIFeatures" (nuclear kill-switch added
+                // in 1.99 that hides all AI/Chat UI and prevents the extensions from activating).
+                "chat.agentsControl.enabled": false,
+                "chat.disableAIFeatures": true,
                 // Disable extension recommendations
                 "extensions.ignoreRecommendations": true,
                 // Hide configuration folders from students
