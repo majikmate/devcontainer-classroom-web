@@ -1,20 +1,23 @@
 # Devcontainer Classroom Web
 
 A [Dev Container](https://containers.dev/) configuration for web development
-classroom environments. This setup provides a consistent development environment
-with pre-configured tools for web development, specifically designed for
-educational use.
+classroom environments. This setup provides a consistent, pre-configured
+development environment designed for educational use.
+
+Published image: `ghcr.io/majikmate/devcontainer-classroom-web`
 
 **Features:**
 
-- Based on Debian Bookworm
+- Built on top of
+  [`devcontainer-base`](https://github.com/majikmate/devcontainer-base)
+- Multi-arch support (linux/amd64 and linux/arm64)
 - Optimized for web development education
 - Pre-configured VS Code settings for classroom use
 
 ## Included Tools & Languages
 
-This development container includes the following pre-installed tools and
-languages optimized for web development education:
+All runtimes and core tooling come from the base image
+(`ghcr.io/majikmate/devcontainer-base`):
 
 ### Languages & Runtimes
 
@@ -26,18 +29,24 @@ languages optimized for web development education:
 
 - **Git** - Configured with classroom-optimized settings for smooth workflows
 - **VS Code Extensions**:
-  - GitHub Markdown Preview
-  - Deno support
-  - Live Server for web development
-  - Lorem Ipsum generator
+  - [Live Server](https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server)
+    — real-time browser preview, opens in external browser
+  - [Lorem Ipsum](https://marketplace.visualstudio.com/items?itemName=tyriar.lorem-ipsum)
+    — placeholder text generator
+  - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
+    — autocomplete for Tailwind classes
+  - [ES7+ React/Redux/React-Native Snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets)
+    — shorthand snippets for React, Redux, and related patterns
 
 ### Classroom-Optimized Configuration
 
-- AI features (Copilot) disabled by default
-- Automatic git stashing and rebasing for smooth starter repo updates
-- Smart commit and sync workflows
-- Consistent formatting and linting rules
-- Hidden configuration folders for cleaner student experience
+- Copilot and Copilot Chat extensions disabled; Next Edit Suggestions explicitly
+  turned off
+- GitHub Pull Request extension disabled
+- Secondary sidebar hidden to keep the workspace clean
+- Extension recommendations suppressed
+- Configuration folders (`.devcontainer`, `.github`, `.vscode`) hidden from
+  students
 
 ## Getting Started
 
@@ -58,8 +67,8 @@ languages optimized for web development education:
    the command palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and select "Dev
    Containers: Reopen in Container"
 
-4. **Wait for setup**: The container will build automatically (first time may
-   take a few minutes)
+4. **Wait for setup**: The container will pull and start automatically (first
+   time may take a few minutes)
 
 ### For Instructors
 
@@ -67,41 +76,28 @@ This configuration is designed to provide students with a consistent development
 environment. Key benefits:
 
 - No need for students to install development tools locally
-- Consistent environment across different operating systems
-- Pre-configured git workflows for classroom assignments
+- Consistent environment across different operating systems (amd64 & arm64)
 - Disabled AI assistance to encourage learning fundamentals
+- Hidden config folders keep the workspace clutter-free for students
 
 ### Customization
 
-You can modify the development container by editing files in the `.devcontainer`
-folder:
+Modify the development container by editing `.devcontainer/devcontainer.json`:
 
-- `devcontainer.json` - Main configuration file
-- `Dockerfile` - Custom container setup
-- `devcontainer-lock.json` - Locked feature versions (managed automatically)
+- Add or remove VS Code extensions in the `extensions` array
+- Adjust VS Code settings under `customizations.vscode.settings`
 
-## Version Management
+## CI/CD
 
-Feature versions in `devcontainer.json` are locked by `devcontainer-lock.json`
-to ensure consistency across environments.
+A GitHub Actions workflow (`.github/workflows/publish-devcontainer.yml`)
+automatically builds and publishes the container image to the GitHub Container
+Registry:
 
-To manage feature versions, install the devcontainer CLI:
-
-```bash
-npm install -g @devcontainers/cli
-```
-
-To check for potential upgrades to the latest feature versions:
-
-```bash
-devcontainer outdated --workspace-folder .
-```
-
-To upgrade to the latest feature versions:
-
-```bash
-devcontainer upgrade --workspace-folder .
-```
+- **On push to `main`**: Builds both architectures and updates the build cache
+- **On version tag (`v*`)**: Builds, pushes per-arch images, and creates a
+  multi-arch manifest with `latest` and semver tags
+- **On pull request** (touching `.devcontainer/**` or `.github/**`): Build-only
+  validation without pushing
 
 ## Contributing
 
