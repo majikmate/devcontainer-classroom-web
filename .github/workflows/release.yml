@@ -1,0 +1,58 @@
+# Builds, tests and releases ghcr.io/majikmate/devcontainer-classroom-web.
+# The logic is in the shared workflow of devcontainer-base:
+# https://github.com/majikmate/devcontainer-base/blob/main/.github/workflows/devcontainer-image.yml
+name: Release
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  # Hourly check: a new base image (for example with new tool versions) leads to a new release
+  schedule:
+    - cron: "47 * * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Release a new version even if no input changed
+        type: boolean
+        default: false
+      bump:
+        description: Version step
+        type: choice
+        options: [auto, patch, minor, major]
+        default: auto
+
+# One release at a time; pull requests cancel their older runs
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'release' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  image:
+    uses: majikmate/devcontainer-base/.github/workflows/devcontainer-image.yml@main
+    permissions:
+      contents: write
+      packages: write
+      actions: write
+    with:
+      image-title: DevContainer Classroom Web
+      image-description: Classroom Dev Container for web development (Debian 13, Node.js LTS, Deno LTS, Prettier with Tailwind CSS class sorting) with AI features turned off
+      # Same major version as the base image in .devcontainer/Dockerfile
+      major-version: 2
+      force: ${{ inputs.force || false }}
+      bump: ${{ inputs.bump || 'auto' }}
+      smoke-test: |
+        set -e
+        . /etc/os-release
+        echo "debian: ${PRETTY_NAME}"
+        test "${VERSION_CODENAME}" = "trixie"
+        echo "user: $(whoami)"
+        echo "version: node=$(node --version)"
+        echo "version: deno=$(deno --version | head -n 1 | cut -d ' ' -f 2)"
+        echo "version: go=$(go env GOVERSION | sed 's/^go//')"
+        echo "version: prettier=$(prettier --version)"
+        echo "--- Prettier: standard style and Tailwind CSS class sorting"
+        mkdir -p /tmp/smoke && cd /tmp/smoke
+        printf '<div class="text-center p-4 flex card"></div>\n' > index.html
+        prettier index.html | tee /dev/stderr | grep -F 'class="card flex p-4 text-center"'
