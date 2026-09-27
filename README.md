@@ -35,9 +35,12 @@ Containers: Rebuild Container**.
 
 ## Included tools
 
-All runtimes and tools come from the base image:
+All runtimes and tools come from the base image
+[devcontainer-base](https://github.com/majikmate/devcontainer-base), which
+builds on [devcontainer-core](https://github.com/majikmate/devcontainer-core).
+This image adds no layers, only VS Code settings:
 
-- **Node.js** — newest LTS release, with npm and pnpm
+- **Node.js** — newest LTS release, with npm (no pnpm)
 - **Deno** — newest LTS release, the JavaScript/TypeScript runtime and language
   server in VS Code
 - **Go** — newest release
@@ -64,7 +67,7 @@ A project with its own Prettier configuration file uses that file instead.
 ### VS Code extensions
 
 In addition to the extensions of the base image (Go, Deno, Prettier, Markdown
-preview, PlantUML, PDF viewer):
+preview, PlantUML):
 
 - [Live Preview](https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server)
   — preview in the external browser
@@ -96,8 +99,8 @@ The GitHub Pull Requests extension is removed.
 ## Automatic releases
 
 The workflow [`.github/workflows/release.yml`](.github/workflows/release.yml)
-uses the shared workflow of `devcontainer-base` (described in its
-[README](https://github.com/majikmate/devcontainer-base#automatic-releases)):
+uses the shared workflow of `devcontainer-core` (described in its
+[README](https://github.com/majikmate/devcontainer-core#releases)):
 
 - Every night at 03:47 UTC it checks whether the inputs of the image changed:
   the `.devcontainer` folder or the digest of the base image. The base image
@@ -105,19 +108,21 @@ uses the shared workflow of `devcontainer-base` (described in its
   version, so new tool versions reach this image in the same night.
 - To get a new image at once, open **Actions → Release → Run workflow** and
   keep the default options. With the option `upstream` (on by default), the run
-  first starts the Release workflow of devcontainer-base and waits for it. The
-  base image gets a new release only if one of its inputs changed, for example
-  a new Go, Node.js or Deno version. Then the run checks this image and
+  first starts the Release workflow of devcontainer-base and waits for it;
+  devcontainer-base first starts devcontainer-core in the same way. Each image
+  in the chain gets a new release only if one of its inputs changed, for
+  example a new Go, Node.js or Deno version. Then the run checks this image and
   releases a new version if an input changed. The option `force` releases a new
   version of this image without a change. See
-  [Chain build](https://github.com/majikmate/devcontainer-base#chain-build) for
-  the one-time setup of the GitHub App.
+  [Schedule and chain build](https://github.com/majikmate/devcontainer-core#schedule-and-chain-build)
+  for the GitHub App.
 - A push to `main` with changes in `.devcontainer` releases a new version.
 - Pull requests are built and tested (both architectures) without publishing.
 - A tag `vX.Y.Z` releases exactly this version.
 
-Each release is built without cache, tested inside the container (Debian
-release, versions, Prettier with Tailwind CSS sorting), and gets the tags
+Each release is built without cache, tested inside the container (the tests of
+all layers: user, SSH server, Go, Node.js, Deno, Prettier with Tailwind CSS
+sorting), and gets the tags
 `X.Y.Z`, `X.Y`, `X` and `latest` and a GitHub release with the installed
 versions.
 
