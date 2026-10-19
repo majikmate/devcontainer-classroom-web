@@ -18,7 +18,7 @@
         "ms-vscode.live-server",
         "tyriar.lorem-ipsum",
         "bradlc.vscode-tailwindcss",
-        "dsznajder.es7-react-js-snippets",
+        "r5n.es-js-snippets",
         // Disable extensions that might interfere
         "-github.vscode-pull-request-github"
         // Copilot is not listed here: Copilot Chat is built into VS Code and
