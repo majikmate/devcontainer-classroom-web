@@ -64,7 +64,7 @@ The VS Code settings are in
   (opens in the external browser),
   [Lorem Ipsum](https://marketplace.visualstudio.com/items?itemName=tyriar.lorem-ipsum),
   [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss),
-  [ES7+ React Snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets),
+  [ES JS Snippets](https://marketplace.visualstudio.com/items?itemName=r5n.es-js-snippets),
   [HTML-validate](https://marketplace.visualstudio.com/items?itemName=html-validate.vscode-html-validate).
   GitHub Pull Requests is removed.
 - **HTML validation:** HTML-validate checks HTML while you type, offline, and
