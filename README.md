@@ -42,7 +42,8 @@ Add `.devcontainer/devcontainer.json` to the assignment (template) repository:
 ```
 
 - `:2` receives all compatible updates (new tool versions, security updates).
-- A full version (for example `:2.0.6`) stays available for at least 90 days.
+- A full version (for example `:2.0.6`) stays available until five newer
+  releases exist; only the newest 5 releases are kept.
 - With a local Docker installation, run
   `docker pull ghcr.io/majikmate/devcontainer-classroom-web:2` and then **Dev
   Containers: Rebuild Container** to get the newest version.
@@ -95,10 +96,11 @@ The VS Code settings are in
 - **Manual:** **Actions → Release → Run workflow**. The option `upstream` (on
   by default) first updates base and core; `force` releases without a change.
 - **Pull requests** build and test both architectures and publish nothing.
-- **Kept versions:** the newest release and the tags `2`, `2.x` and `latest`.
-  Older releases and workflow runs are deleted after 90 days. **Actions →
-  Prune** lists or deletes them at once; the scope `all-but-newest` keeps
-  only the newest release and the newest run of each workflow.
+- **Kept versions:** the newest 5 releases and the tags `2`, `2.x` and
+  `latest`. Older releases are deleted after every release run, and workflow
+  runs after 30 days. **Actions → Prune** lists or deletes them at once; the
+  scope `all-but-newest` keeps only the newest release and the newest run of
+  each workflow.
 
 Rules: [Releases](https://github.com/majikmate/devcontainer-core#releases).
 
