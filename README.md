@@ -86,7 +86,15 @@ The VS Code settings are in
   > `chat.disableAIFeatures` to `false` in your user settings.
 
 - Extension recommendations are off. The folders `.devcontainer`, `.github`
-  and `.vscode` are hidden.
+  and `.vscode` are hidden, and the folder `node_modules` at the root of the
+  workspace (the `node_modules` of a project in a subfolder stays visible).
+- **Deno extension off:** the layer `deno` turns the Deno extension off
+  (`"deno.enable": false`); Deno itself is installed. A course that runs on
+  Deno turns the extension on in its own `devcontainer.json`
+  (`"deno.enable": true`).
+- **Course settings:** VS Code settings in the `devcontainer.json` of a course
+  replace the setting of the same name of the image as a whole. A course that
+  sets `files.exclude` itself must repeat the entries above.
 
 ## Releases
 
