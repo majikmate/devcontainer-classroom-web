@@ -43,11 +43,16 @@
         "workbench.secondarySideBar.defaultVisibility": "hidden",
         // Disable extension recommendations
         "extensions.ignoreRecommendations": true,
-        // Hide configuration folders from students
+        // Hide configuration folders from students, and the folder
+        // node_modules at the root of the workspace (the tools that npm ci
+        // installs for a course). "node_modules" without "**/" hides only
+        // the root folder; the node_modules of a project in a subfolder (for
+        // example a Vite project of an assignment) stays visible.
         "files.exclude": {
           "**/.devcontainer": true,
           "**/.github": true,
-          "**/.vscode": true
+          "**/.vscode": true,
+          "node_modules": true
         },
         "livePreview.openPreviewTarget": "External Browser"
       }
