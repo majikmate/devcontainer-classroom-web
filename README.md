@@ -85,16 +85,26 @@ The VS Code settings are in
   > Code after you have used this container. To use Copilot again, set
   > `chat.disableAIFeatures` to `false` in your user settings.
 
-- Extension recommendations are off. The folders `.devcontainer`, `.github`
-  and `.vscode` are hidden, and the folder `node_modules` at the root of the
-  workspace (the `node_modules` of a project in a subfolder stays visible).
+- Extension recommendations are off. The folders `.course`, `.devcontainer`,
+  `.github` and `.vscode` are hidden, and the folder `node_modules` at the
+  root of the workspace (the `node_modules` of a project in a subfolder stays
+  visible). `.course` holds the settings and the own rules of a course of the
+  [course module](https://github.com/nimblescape/course-vscode).
+- **Course files read-only:** VS Code opens the files of the course
+  read-only (`files.readonlyInclude`): each Markdown file, `10-course/`,
+  `reference-material/` and `.course/`. The work of the students stays
+  writable (`files.readonlyExclude`): the folder `workspace/` of each
+  assignment and `30-playground/`. A teacher who changes the course in the
+  Dev Space makes one file writable with **File: Set Active Editor Writeable
+  in Session**; **File: Reset Active Editor Read-only in Session** ends it.
 - **Deno extension off:** the layer `deno` turns the Deno extension off
   (`"deno.enable": false`); Deno itself is installed. A course that runs on
   Deno turns the extension on in its own `devcontainer.json`
   (`"deno.enable": true`).
 - **Course settings:** VS Code settings in the `devcontainer.json` of a course
   replace the setting of the same name of the image as a whole. A course that
-  sets `files.exclude` itself must repeat the entries above.
+  sets `files.exclude`, `files.readonlyInclude` or `files.readonlyExclude`
+  itself must repeat the entries above.
 
 ## Releases
 
