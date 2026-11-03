@@ -43,16 +43,40 @@
         "workbench.secondarySideBar.defaultVisibility": "hidden",
         // Disable extension recommendations
         "extensions.ignoreRecommendations": true,
-        // Hide configuration folders from students, and the folder
-        // node_modules at the root of the workspace (the tools that npm ci
-        // installs for a course). "node_modules" without "**/" hides only
-        // the root folder; the node_modules of a project in a subfolder (for
-        // example a Vite project of an assignment) stays visible.
+        // Hide configuration folders from students, the folder .course of the
+        // course module (the settings and the own rules of the course for its
+        // authors), and the folder node_modules at the root of the workspace
+        // (the tools that npm ci installs for a course). "node_modules"
+        // without "**/" hides only the root folder; the node_modules of a
+        // project in a subfolder (for example a Vite project of an
+        // assignment) stays visible.
         "files.exclude": {
+          "**/.course": true,
           "**/.devcontainer": true,
           "**/.github": true,
           "**/.vscode": true,
           "node_modules": true
+        },
+        // Open the files of the course read-only: the README of the course,
+        // the course material (chapters, tutorial pages, walkthroughs), the
+        // overviews and READMEs of the assignments, FEEDBACK.md, the
+        // reference material and the folder .course. The work of the students
+        // stays writable: the folder workspace/ of each assignment and
+        // 30-playground/. The paths are absolute, from the folder of the
+        // repository in /workspaces/: a relative path would also match a
+        // project in workspace/ that is opened as its own folder ("code ." in
+        // workspace/), for example its README.md. A teacher who changes the
+        // course makes one file writable with "File: Set Active Editor
+        // Writeable in Session".
+        "files.readonlyInclude": {
+          "/workspaces/*/.course/**": true,
+          "/workspaces/*/README.md": true,
+          "/workspaces/*/10-course/**": true,
+          "/workspaces/*/20-assignments/README.md": true,
+          "/workspaces/*/20-assignments/*/README.md": true,
+          "/workspaces/*/20-assignments/*/*/README.md": true,
+          "/workspaces/*/20-assignments/*/*/FEEDBACK.md": true,
+          "/workspaces/*/reference-material/**": true
         },
         "livePreview.openPreviewTarget": "External Browser"
       }
