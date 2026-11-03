@@ -57,23 +57,6 @@
           "**/.vscode": true,
           "node_modules": true
         },
-        // Open the files of the course read-only: each Markdown file (the
-        // READMEs of the course, of the chapters and of the assignments, the
-        // tutorial pages, the walkthroughs, the cheat sheet and FEEDBACK.md),
-        // the course material and the reference material. The work of the
-        // students stays writable: the folder workspace/ of each assignment
-        // and the playground. A teacher who changes the course makes one file
-        // writable with "File: Set Active Editor Writeable in Session".
-        "files.readonlyInclude": {
-          "**/*.md": true,
-          "**/.course/**": true,
-          "10-course/**": true,
-          "reference-material/**": true
-        },
-        "files.readonlyExclude": {
-          "**/workspace/**": true,
-          "30-playground/**": true
-        },
         "livePreview.openPreviewTarget": "External Browser"
       }
     }
